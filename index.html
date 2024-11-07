@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                font-family: "Poppins", sans-serif;
+                background: linear-gradient(90deg, rgba(230,230,230,1) 0%, rgba(221,221,221,1) 50%, rgba(230,230,230,1) 100%);
+                margin: 0;
+                overflow-x: hidden;
+            }
+            
+            *{
+                box-sizing: border-box;
+                letter-spacing: 0.035em;
+            }
+
+            .container {
+                margin: 0 auto;
+                padding: 0 5% 5% 5%;
+            }
+
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 25px;
+                background-color: rgba(255, 255, 255, 0.95);
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+                border-radius: 20px;
+                position: sticky;
+                top: 5%;
+                z-index: 1000;
+                border: 1.5px solid white;
+            }
+
+            .navbar-nav {
+                display: flex;
+                justify-content: space-evenly;
+                gap: 20px;
+                list-style: none;
+                padding: 0;
+                margin: 0 auto;
+            }
+
+            .nav-link {
+                padding: 10px 15px;
+                text-decoration: none;
+                color: #666666;
+                border-radius: 10px;
+                transition: box-shadow 0.3s;
+                font-size: 0.9em;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+            }
+
+            .nav-link:hover {
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .btn-login {
+                display: flex;
+                align-items: center;
+                background-color: #333;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 20px;
+                cursor: pointer;
+                font-size: 0.7em;
+                letter-spacing: 0.2em;
+                font-weight: 500;
+                gap: 10px;
+            }
+
+            a {
+                text-decoration: none;
+            }
+
+            .content-item {
+                position: relative;
+                margin: 0 auto;
+                padding: 25px;
+                width: 90%;
+                background-color: rgba(255, 255, 255, 0.6);
+                border-radius: 15px;
+                box-shadow: 0px 4px 15px rgba(78, 78, 78, 0.2);
+                overflow: hidden;
+                border: 1px solid white;
+            }
+
+            .blurry-shape {
+                /* position: absolute;
+                top: -40px;
+                left: 10px;
+                width: 1300px;
+                height: 400px;
+                background: rgba(0, 110, 255, 0.3);
+                filter: blur(60px);
+                border-radius: 50%;
+                z-index: -100; */
+            }
+
+            .h1-add {
+                font-size: 2em;
+                color: #333;
+                margin-bottom: 20px;
+                font-weight: 700;
+            }
+
+            .add-p {
+                font-size: 1em;
+                color: #555;
+                line-height: 1.6em;
+                margin-bottom: 20px;
+            }
+
+            .spanned {
+                font-weight: bold;
+                color: rgb(0, 89, 255);
+            }
+
+            .btn-primary {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #333;
+                color: #fff;
+                border-radius: 20px;
+                font-size: 0.9em;
+                text-align: center;
+                transition: background-color 0.3s;
+            }
+
+            .btn-primary:hover {
+                background-color: #555;
+            }
+
+            .link-bottom {
+                text-decoration: none;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+            }
+            .content-item img{
+                float:left;
+                margin:50px;
+                
+            }
+            .content-item::after {
+                display: table;
+                clear:both;
+            }
+
+            .table-container {
+                margin-top: 20px;
+                overflow-x: auto;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 20px;
+            }
+
+            table thead {
+                background-color: #333;
+                color: white;
+            }
+
+            table th, table td {
+                padding: 12px 15px;
+                text-align: left;
+            }
+
+            table tbody tr:nth-child(even) {
+                background-color: #f2f2f2;
+            }
+
+            table tbody tr:hover {
+                background-color: #e0e0e0;
+            }
+
+            .contact-form {
+                background-color: #f9f9f9;
+                padding: 20px;
+                border-radius: 10px;
+                box-shadow: 0px 4px 15px rgba(78, 78, 78, 0.1);
+                border: 1px solid #e0e0e0;
+            }
+
+            .contact-form label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 600;
+                color: #333;
+            }
+
+            .contact-form input[type="text"],
+            .contact-form input[type="email"],
+            .contact-form input[type="tel"],
+            .contact-form textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 0.9em;
+            }
+
+            .contact-form textarea {
+                resize: vertical;
+            }
+
+            .btn-submit {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                background-color: #333;
+                color: #fff;
+                font-size: 1em;
+                font-weight: bold;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .btn-submit:hover {
+                background-color: #555;
+            }
+            .right-main{
+                width:70%;
+                float:right;
+            }
+            .left-main{
+                position: relative;
+                margin: 0 auto;
+                display:flex;
+                align-items: center;
+                justify-content: center;
+                padding: 25px;
+                height: 90vh;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.6);
+                border-radius: 15px;
+                box-shadow: 0px 4px 15px rgba(78, 78, 78, 0.2);
+                overflow: hidden;
+                border: 1px solid white;
+            }
+            .l-container {
+                position:fixed;
+                display:flex;
+                flex-direction: column;
+                justify-content: center;
+                justify-items: center;
+                align-items: center;
+
+                width: 25%;
+                margin: 3%;
+            }
+
+            .nav-link-down{
+                padding: 10px 15px;
+                text-decoration: none;
+                display:block;
+                color: #666666;
+                border-radius: 10px;
+                transition: box-shadow 0.3s;
+                font-size: 1.4em;
+                font-weight: 600;
+                letter-spacing: 0.2em;
+            }
+            .nav-link-down:hover {
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+            .navbar-down {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                padding: 25px;
+                height: 90%;
+                border-radius: 20px;
+                z-index: 1000;
+            }
+            .navbar-nav-down {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-evenly;
+                gap: 20px;
+                list-style: none;
+                padding: 0;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="right-main">
+            <div class="container">
+                <br><br><br>
+
+                <nav class="navbar">
+                        <ul class="navbar-nav">
+                            <li><a class="nav-link" href="#">ABOUT</a></li>
+                            <li><a class="nav-link" href="#">SKILLS</a></li>
+                            <li><a class="nav-link" href="#">CONTACT</a></li>
+                        </ul>
+                        <div class="btn-login">
+                            <span class="login-text">REGISTER</span>
+                        </div>
+                </nav>
+                <br><br><br>
+
+                <div class="content-item">
+                    <div class="blurry-shape"></div>
+                    <img src="img.PNG">
+                    <h1 class="h1-add">
+                        <span class="spanned">About Me</span>  <span class="spanned"></span>  
+                    </h1>
+                    <p class="add-p">
+                        Hello! I'm [Your Name], a passionate web developer with over 5 years of experience in building dynamic and responsive wessites. I specialize in tront-end development, using tecnnologies like HIML, Gos, and Javascript to create user-friendly interfaces.
+    I have a strong eye for design and a keen understanding of user experience, which helps me craft visually appealing and functional websites. My journey in web development began when I created my first website as a hobby, and since then, it has grown into a fulfilling career.
+    In addition to web development, I enjoy learning about new technologies and frameworks, attending tech meetups, and collaborating with fellow developers. When I'm not coding, you can find me exploring the outdoors, reading tech blogs, or experimenting with graphic design.
+                    </p>
+                </div>
+                <br><br><br>
+    
+                <div class="content-item">
+                    <div class="blurry-shape"></div>
+    
+                    <h2 class="h1-add"><span class="spanned">Skills</span></h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Skill</th>
+                                    <th>Proficiency</th>
+                                    <th>Experience (Years)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>HTML</td>
+                                    <td>Expert</td>
+                                    <td>5</td>
+                                </tr>
+                                <tr>
+                                    <td>CSS</td>
+                                    <td>Intermediate</td>
+                                    <td>4</td>
+                                </tr>
+                                <tr>
+                                    <td>JavaScript</td>
+                                    <td>Intermediate</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td>React</td>
+                                    <td>Beginner</td>
+                                    <td>1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <br><br><br>
+
+                <div class="content-item">
+                    <div class="blurry-shape"></div>
+        
+                    <h2 class="h1-add"><span class="spanned">Contact Me</span></h2>
+                    <form class="contact-form">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" required>
+                
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                
+                        <label for="phone">Phone (optional):</label>
+                        <input type="tel" id="phone" name="phone">
+                
+                        <button type="submit" class="btn-submit">Send</button>
+                    </form>
+                </div>
+        
+                <br><br><br>
+            </div>    
+        </div>
+        <div class="l-container">
+            <div class="left-main">
+                <nav class="navbar-down">
+                    <ul class="navbar-nav-down">
+                        <li><a class="nav-link-down" href="#">ABOUT</a></li>
+                        <li><a class="nav-link-down" href="#">SKILLS</a></li>
+                        <li><a class="nav-link-down" href="#">CONTACT</a></li>
+                    </ul>
+                    <div class="btn-login">
+                        <span class="login-text">REGISTER</span>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+    </body>
+</html>
